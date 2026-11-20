@@ -1,0 +1,53 @@
+:root{
+  --paper:#fbfdff; --line:#c4d9f2; --margin:#e5484d; --ink:#1b2a4a; --pen:#2d5bff; --hl:#ffe45e; --hl-ink:#1b2a4a; --soft:#5b6b8c;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--paper:#172033;--line:#27385a;--margin:#ff6b70;--ink:#eaf0ff;--pen:#7d9bff;--soft:#9fb0d4}
+}
+:root[data-theme="dark"]{--paper:#172033;--line:#27385a;--margin:#ff6b70;--ink:#eaf0ff;--pen:#7d9bff;--soft:#9fb0d4}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0; min-height:100vh; color:var(--ink); background-color:var(--paper);
+  background-image:linear-gradient(90deg,transparent 47px,var(--margin) 47px,var(--margin) 49px,transparent 49px),
+    repeating-linear-gradient(transparent,transparent 31px,var(--line) 31px,var(--line) 32px);
+  font:22px/32px "Patrick Hand","Comic Sans MS",cursive,sans-serif;
+}
+main{max-width:640px;margin:0 auto;padding:24px 20px 48px 68px}
+h1,h2{font-family:"Caveat Brush","Segoe Print",cursive;font-weight:400;margin:0;line-height:1.1}
+h1{font-size:clamp(52px,14vw,76px);transform:rotate(-2deg);margin-bottom:8px;color:var(--pen)}
+h2{font-size:34px;margin-bottom:8px}
+p{margin:0 0 16px}
+.soft{color:var(--soft)}
+button,input{font:inherit;color:inherit}
+.btn{
+  display:inline-block;background:var(--paper);border:2.5px solid var(--ink);border-radius:10px;padding:6px 16px;line-height:28px;
+  box-shadow:3px 3px 0 var(--ink);cursor:pointer;margin:0 10px 12px 0;transition:transform .08s,box-shadow .08s;
+}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn.main{background:var(--hl);color:var(--hl-ink);border-color:var(--hl-ink);box-shadow:3px 3px 0 var(--hl-ink)}
+.btn:focus-visible,input:focus-visible{outline:3px solid var(--pen);outline-offset:3px}
+.stories{display:grid;gap:12px;margin:20px 0}
+.story{text-align:left;width:100%;margin:0}
+.story small{display:block;color:var(--soft);font-size:18px;line-height:22px;margin-top:-2px}
+.bar{height:10px;border:2px solid var(--ink);border-radius:6px;overflow:hidden;margin:0 0 20px}
+.bar i{display:block;height:100%;width:0;background:var(--pen);transition:width .25s}
+label{display:block;font-size:30px;line-height:36px;margin-bottom:12px;font-family:"Caveat Brush","Segoe Print",cursive}
+input[type=text]{
+  width:100%;background:transparent;border:0;border-bottom:3px solid var(--ink);padding:4px 2px;font-size:28px;margin-bottom:8px;border-radius:0;
+}
+.err{color:var(--margin);min-height:32px;margin:0 0 8px}
+.story-text{font-size:24px;line-height:32px}
+.fill{
+  background:linear-gradient(var(--hl),var(--hl)) 0 100%/0% 100% no-repeat;color:var(--hl-ink);padding:0 3px;border-radius:3px;
+  font-weight:bold;transition:background-size .35s ease-out;transition-delay:calc(var(--i)*120ms);
+}
+.show .fill{background-size:100% 100%}
+@media (prefers-reduced-motion:reduce){.fill{transition:none;background-size:100% 100%}.btn{transition:none}.bar i{transition:none}}
+@media (max-width:480px){
+  body{font-size:20px;background-image:linear-gradient(90deg,transparent 27px,var(--margin) 27px,var(--margin) 29px,transparent 29px),repeating-linear-gradient(transparent,transparent 31px,var(--line) 31px,var(--line) 32px)}
+  main{padding-left:44px;padding-right:14px}
+  .story-text{font-size:22px}
+}
